@@ -40,13 +40,13 @@ public class UserController {
     @ResponseStatus(code = HttpStatus.OK)
     public void forgotPassword( @Valid @RequestBody ForgotPasswordRequest request)
     {
-        userService.forgotPassword(request);
+        userService.updatePassword(request);
     }
 
     @PatchMapping(path = "tokens/{token}/forgot-password")
     @ResponseStatus(code = HttpStatus.OK)
     public void forgotPassword(@PathVariable String token, @Valid @RequestBody UpdateForgotPasswordRequest request)
     {
-        userService.forgotPassword(token, request);
+        userService.updatePassword(token, request);
     }
 }

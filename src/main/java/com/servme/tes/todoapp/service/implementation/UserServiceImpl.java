@@ -73,7 +73,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void forgotPassword(ForgotPasswordRequest request) {
+    public void updatePassword(ForgotPasswordRequest request) {
         UserEntity user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(new ResourceNotFoundException("Email does not exist " + request.getEmail()));
 
@@ -86,7 +86,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void forgotPassword(String token, UpdateForgotPasswordRequest request) {
+    public void updatePassword(String token, UpdateForgotPasswordRequest request) {
         ForgotPasswordEntity forgotPasswordEntity = forgotPasswordRepository.findById(token)
                 .orElseThrow(new ResourceNotFoundException("Token does not exist " + token));
         UserEntity user = forgotPasswordEntity.getUser();
